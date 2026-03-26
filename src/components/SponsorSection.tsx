@@ -30,7 +30,7 @@ const sponsors = [
 
 export const SponsorSection: React.FC = () => {
   return (
-    <section id="sponsor" className="py-xxl bg-background">
+    <section id="sponsor" className="py-xxl bg-transparent">
       <div className="max-w-4xl mx-auto px-md">
         <SectionHeading 
           title="Sponsor Site" 
@@ -39,7 +39,7 @@ export const SponsorSection: React.FC = () => {
         
         <div className="flex flex-col gap-lg">
           {sponsors.map((sponsor) => (
-            <div key={sponsor.id} className="bg-surface rounded-lg shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-md transition-shadow">
+            <div key={sponsor.id} className="bg-surface/80 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-md transition-shadow">
               <div className="md:w-1/3 overflow-hidden bg-white flex items-center justify-center p-md">
                 <img 
                   src={sponsor.image} 

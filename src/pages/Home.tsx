@@ -5,10 +5,10 @@ import { SponsorSection } from '../components/SponsorSection';
 
 export function Home() {
   return (
-    <>
+    <div id="home">
       <HeroSlider />
       <MenuSection />
       <SponsorSection />
-    </>
+    </div>
   );
 }

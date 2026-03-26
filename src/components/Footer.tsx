@@ -1,6 +1,5 @@
 import React from 'react';
 import { Facebook, Instagram, Phone, Globe, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
@@ -80,11 +79,11 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex gap-sm">
                 <span className="text-primary font-medium">2017/02/26</span>
-                <Link to="/menu" className="text-accent hover:text-primary transition-colors">クーポン配信</Link>
+                <a href="#menu" className="text-accent hover:text-primary transition-colors">クーポン配信</a>
               </li>
               <li className="flex gap-sm">
                 <span className="text-primary font-medium">2016/06/01</span>
-                <Link to="/" className="text-accent hover:text-primary transition-colors">ホームページ開設</Link>
+                <a href="#home" className="text-accent hover:text-primary transition-colors">ホームページ開設</a>
               </li>
               <li className="flex gap-sm">
                 <span className="text-primary font-medium">2016/05/13</span>
@@ -116,7 +115,7 @@ export const Footer: React.FC = () => {
 
         {/* Copyright */}
         <div className="text-center text-sm text-text-muted border-t border-border-light pt-lg">
-          <p>Copyright &copy; 2016-2026 <Link to="/" className="hover:text-primary transition-colors">Hair Resort Lino</Link></p>
+          <p>Copyright &copy; 2016-2026 <a href="#home" className="hover:text-primary transition-colors">Hair Resort Lino</a></p>
         </div>
       </div>
     </footer>

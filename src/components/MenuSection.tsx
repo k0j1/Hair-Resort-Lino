@@ -19,26 +19,14 @@ const menuItems = [
 
 export const MenuSection: React.FC = () => {
   return (
-    <section id="menu" className="py-xxl bg-background">
+    <section id="menu" className="py-xxl bg-transparent">
       <div className="max-w-4xl mx-auto px-md">
         <SectionHeading 
           title="Menu" 
           lineImageSrc="https://www.lino-hair-resort.com/images/hawaii-line.png" 
         />
         
-        <div className="bg-surface rounded-lg shadow-sm p-lg md:p-xl border border-border-light relative overflow-hidden">
-          {/* Hawaiian-themed background pattern */}
-          <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="menu-sky-sea" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#87CEEB" />
-                  <stop offset="100%" stopColor="#0077BE" />
-                </linearGradient>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#menu-sky-sea)" />
-            </svg>
-          </div>
+        <div className="bg-surface/80 backdrop-blur-sm rounded-lg shadow-sm p-lg md:p-xl border border-border-light relative overflow-hidden">
           <ul className="space-y-md relative z-10">
             {menuItems.map((item) => (
               <li 
