@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #88cc88;
+  --color-secondary: #ddaa00;
+  --color-accent: #0088ff;
+  --color-accent-dark: #4444ff;
+  --color-danger: #F70832;
+  --color-background: #ffffff;
+  --color-surface: #f3f3f3;
+  --color-text: #333333;
+  --color-text-light: #ffffff;
+  --color-text-muted: #888888;
+  --color-border: #dddddd;
+  --color-border-light: #eeeeee;
+
+  --font-sans: "Open Sans", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 6rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  margin: 0;
+  padding: 0;
+}
+
+/* リンクのデフォルトスタイル */
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* リストのデフォルトスタイル */
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
