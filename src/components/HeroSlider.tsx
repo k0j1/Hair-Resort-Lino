@@ -9,7 +9,7 @@ const slides = [
       <div className="text-center text-text-light [text-shadow:_2px_2px_4px_rgb(0_0_0_/_100%)]">
         <h1 className="text-4xl md:text-6xl font-light tracking-widest mb-lg uppercase">Hair Resort Lino</h1>
         <p className="text-lg md:text-xl tracking-widest mt-xl">２０１６年４月５日　ＯＰＥＮ</p>
-        <p className="text-sm tracking-widest mt-sm opacity-80">v0.0.10</p>
+        <p className="text-sm tracking-widest mt-sm opacity-80">v0.0.11</p>
       </div>
     ),
   },
