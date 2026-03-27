@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Home, Building2, User, Scissors, Menu as MenuIcon, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  userProfile?: { displayName: string } | null;
+}
+
+export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -37,6 +41,11 @@ export const Header: React.FC = () => {
               }}
             />
           </Link>
+          {userProfile && (
+            <span className="ml-2 text-sm font-medium text-primary hidden md:inline-block">
+              {userProfile.displayName}様
+            </span>
+          )}
         </div>
 
         {/* Desktop Navigation */}
@@ -83,6 +92,11 @@ export const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background border-b border-border absolute w-full left-0 top-20 shadow-md">
           <nav className="flex flex-col py-sm">
+            {userProfile && (
+              <div className="px-lg py-md text-sm font-medium text-primary border-b border-border-light">
+                {userProfile.displayName}様、ようこそ
+              </div>
+            )}
             {navItems.map((item) => (
               item.label === 'Home' ? (
                 <button
