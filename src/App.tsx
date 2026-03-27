@@ -35,7 +35,7 @@ function AppContent() {
           setIsLineClient(true);
           
           if (!liff.isLoggedIn()) {
-            liff.login();
+            liff.login({ redirectUri: window.location.origin + '/' });
           } else {
             const profile = await liff.getProfile();
             setUserProfile(profile);
