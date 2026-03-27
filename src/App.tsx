@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import liff from '@line/liff';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -22,7 +22,6 @@ function ScrollToTop() {
 function AppContent() {
   const [isLineClient, setIsLineClient] = useState(false);
   const [userProfile, setUserProfile] = useState<{ displayName: string } | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const initApp = async () => {
@@ -36,12 +35,11 @@ function AppContent() {
           setIsLineClient(true);
           
           if (!liff.isLoggedIn()) {
+            // 未ログイン時はログイン処理を行い、完了後にHOME(/)へリダイレクトさせる
             liff.login({ redirectUri: window.location.origin + '/' });
           } else {
             const profile = await liff.getProfile();
             setUserProfile(profile);
-            // LINE起動時は初回のみ強制的にHOMEへ遷移
-            navigate('/');
           }
         } else {
           console.log("普通のブラウザで起動されました");
@@ -55,7 +53,7 @@ function AppContent() {
     };
 
     initApp();
-  }, [navigate]);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-text bg-transparent pb-16 md:pb-0 relative">
