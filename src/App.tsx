@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import liff from '@line/liff';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -19,9 +19,10 @@ function ScrollToTop() {
   return null;
 }
 
-export default function App() {
+function AppContent() {
   const [isLineClient, setIsLineClient] = useState(false);
   const [userProfile, setUserProfile] = useState<{ displayName: string } | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const initApp = async () => {
@@ -54,6 +55,7 @@ export default function App() {
         } else {
           const profile = await liff.getProfile();
           setUserProfile(profile);
+          navigate('/'); // ログイン完了後にHOMEへ遷移
         }
       } catch (err) {
         console.error("LINE features setup failed", err);
@@ -66,24 +68,30 @@ export default function App() {
     };
 
     initApp();
-  }, []);
+  }, [navigate]);
 
+  return (
+    <div className="min-h-screen flex flex-col font-sans text-text bg-transparent pb-16 md:pb-0 relative">
+      <Header userProfile={userProfile} />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/shop_info" element={<ShopInfo />} />
+          <Route path="/staff" element={<Staff />} />
+        </Routes>
+      </main>
+      <Footer />
+      <MobileFooterNav />
+    </div>
+  );
+}
+
+export default function App() {
   return (
     <Router basename="/">
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col font-sans text-text bg-transparent pb-16 md:pb-0 relative">
-        <Header userProfile={userProfile} />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/shop_info" element={<ShopInfo />} />
-            <Route path="/staff" element={<Staff />} />
-          </Routes>
-        </main>
-        <Footer />
-        <MobileFooterNav />
-      </div>
+      <AppContent />
     </Router>
   );
 }

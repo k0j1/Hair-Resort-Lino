@@ -18,6 +18,11 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
 
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border shadow-sm">
+      {userProfile && (
+        <div className="bg-primary text-background text-center py-xs text-sm font-bold tracking-wider">
+          {userProfile.displayName}様、ようこそ
+        </div>
+      )}
       <div className="max-w-7xl mx-auto px-md h-20 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center gap-sm">
@@ -41,11 +46,6 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
               }}
             />
           </Link>
-          {userProfile && (
-            <span className="ml-2 text-sm font-medium text-primary hidden md:inline-block">
-              {userProfile.displayName}様
-            </span>
-          )}
         </div>
 
         {/* Desktop Navigation */}
@@ -92,11 +92,6 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background border-b border-border absolute w-full left-0 top-20 shadow-md">
           <nav className="flex flex-col py-sm">
-            {userProfile && (
-              <div className="px-lg py-md text-sm font-medium text-primary border-b border-border-light">
-                {userProfile.displayName}様、ようこそ
-              </div>
-            )}
             {navItems.map((item) => (
               item.label === 'Home' ? (
                 <button
