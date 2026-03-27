@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Home, Building2, User, Scissors, Menu as MenuIcon, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
   userProfile?: { displayName: string } | null;
@@ -8,6 +8,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { label: 'Home', icon: <Home className="w-4 h-4 mr-2" />, href: '/' },
@@ -50,23 +51,15 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-lg">
-          {navItems.map((item) => (
-            item.label === 'Home' ? (
-              <button
-                key={item.label}
-                onClick={() => {
-                  window.location.href = window.location.origin + window.location.pathname;
-                }}
-                className="flex items-center text-text hover:text-primary transition-colors text-sm font-medium uppercase tracking-wider"
-              >
-                {item.icon}
-                {item.label}
-              </button>
-            ) : (
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.href;
+            return (
               <Link 
                 key={item.label} 
                 to={item.href}
-                className="flex items-center text-text hover:text-primary transition-colors text-sm font-medium uppercase tracking-wider"
+                className={`flex items-center transition-colors text-sm font-medium uppercase tracking-wider ${
+                  isActive ? 'text-primary' : 'text-text hover:text-primary'
+                }`}
               >
                 {item.icon}
                 {item.label}
@@ -74,8 +67,8 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
                   <span className="ml-2 text-xs text-danger font-bold">New</span>
                 )}
               </Link>
-            )
-          ))}
+            );
+          })}
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -92,24 +85,15 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background border-b border-border absolute w-full left-0 top-20 shadow-md">
           <nav className="flex flex-col py-sm">
-            {navItems.map((item) => (
-              item.label === 'Home' ? (
-                <button
-                  key={item.label}
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    window.location.href = window.location.origin + window.location.pathname;
-                  }}
-                  className="flex items-center px-lg py-md text-text hover:bg-surface hover:text-primary transition-colors text-sm font-medium uppercase tracking-wider border-b border-border-light last:border-0 w-full text-left"
-                >
-                  {item.icon}
-                  {item.label}
-                </button>
-              ) : (
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
                 <Link 
                   key={item.label} 
                   to={item.href}
-                  className="flex items-center px-lg py-md text-text hover:bg-surface hover:text-primary transition-colors text-sm font-medium uppercase tracking-wider border-b border-border-light last:border-0"
+                  className={`flex items-center px-lg py-md transition-colors text-sm font-medium uppercase tracking-wider border-b border-border-light last:border-0 ${
+                    isActive ? 'text-primary bg-surface' : 'text-text hover:bg-surface hover:text-primary'
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.icon}
@@ -118,8 +102,8 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
                     <span className="ml-2 text-xs text-danger font-bold">New</span>
                   )}
                 </Link>
-              )
-            ))}
+              );
+            })}
           </nav>
         </div>
       )}

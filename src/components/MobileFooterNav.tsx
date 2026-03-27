@@ -17,20 +17,7 @@ export const MobileFooterNav: React.FC = () => {
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
-          return item.label === 'HOME' ? (
-            <button
-              key={item.label}
-              onClick={() => {
-                window.location.href = window.location.origin + window.location.pathname;
-              }}
-              className={`flex flex-col items-center justify-center w-full h-full text-xs font-medium transition-colors ${
-                isActive ? 'text-primary' : 'text-text-muted hover:text-text'
-              }`}
-            >
-              {item.icon}
-              {item.label}
-            </button>
-          ) : (
+          return (
             <Link
               key={item.label}
               to={item.path}
