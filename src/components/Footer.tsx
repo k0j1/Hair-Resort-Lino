@@ -115,6 +115,9 @@ export const Footer: React.FC = () => {
 
         {/* Copyright */}
         <div className="text-center text-sm text-text-muted border-t border-border-light pt-lg">
+          <p className="mb-md">
+            <a href="#/privacy" className="hover:text-primary transition-colors underline">プライバシーポリシー</a>
+          </p>
           <p>Copyright &copy; 2016-2026 <a href="#home" className="hover:text-primary transition-colors">Hair Resort Lino</a></p>
         </div>
       </div>

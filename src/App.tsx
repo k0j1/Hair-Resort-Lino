@@ -8,6 +8,7 @@ import { Home } from './pages/Home';
 import { Menu } from './pages/Menu';
 import { ShopInfo } from './pages/ShopInfo';
 import { Staff } from './pages/Staff';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -64,6 +65,7 @@ function AppContent() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/shop_info" element={<ShopInfo />} />
           <Route path="/staff" element={<Staff />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
       </main>
       <Footer />

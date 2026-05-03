@@ -12,7 +12,7 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
 
   const navItems = [
     { label: 'Home', icon: <Home className="w-4 h-4 mr-2" />, href: '/' },
-    { label: 'Menu', icon: <Scissors className="w-4 h-4 mr-2" />, href: '/menu', isNew: true },
+    { label: 'Menu', icon: <Scissors className="w-4 h-4 mr-2" />, href: '/menu' },
     { label: 'Shop Info', icon: <Building2 className="w-4 h-4 mr-2" />, href: '/shop_info' },
     { label: 'Staff', icon: <User className="w-4 h-4 mr-2" />, href: '/staff' },
   ];
@@ -63,9 +63,6 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
               >
                 {item.icon}
                 {item.label}
-                {item.isNew && (
-                  <span className="ml-2 text-xs text-danger font-bold">New</span>
-                )}
               </Link>
             );
           })}
@@ -98,9 +95,6 @@ export const Header: React.FC<HeaderProps> = ({ userProfile }) => {
                 >
                   {item.icon}
                   {item.label}
-                  {item.isNew && (
-                    <span className="ml-2 text-xs text-danger font-bold">New</span>
-                  )}
                 </Link>
               );
             })}
